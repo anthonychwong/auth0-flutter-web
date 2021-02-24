@@ -39,6 +39,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _loggedIn = false;
+  String _name = "";
+  String _avatarUrl = "";
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +53,26 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _loggedIn ? 
-              RaisedButton(child: Text('Logout'),onPressed: (){},):
+              Column(
+                children:[
+                  Image.network(_avatarUrl),
+                  Text(_name),
+                  RaisedButton(
+                    child: Text('Logout'),
+                    onPressed: () async {
+                      auth0.logout();
+                      setState(() => _loggedIn = false);
+                    },)
+                ]
+              ):
               RaisedButton(child: Text('Login'),onPressed: () async {
-                print(await auth0.getTokenWithPopup());
-                // await auth0.loginWithPopup();
-                setState(() => _loggedIn = true);
+                await auth0.loginWithPopup();
+                Map<String, dynamic> user = await auth0.getUser();
+                setState((){
+                  _loggedIn = true;
+                  _name = user["name"];
+                  _avatarUrl = user["picture"];
+                });
               },),
           ],
         ),
