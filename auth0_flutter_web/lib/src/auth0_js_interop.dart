@@ -4,19 +4,11 @@ library auth0_spa_sdk;
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
+import 'options.dart';
+
 @JS()
 @anonymous
 class _Promise<T>{} // just to denote a js promise object
-
-@JS()
-@anonymous
-class Auth0CreateOptions{
-  external String get domain;
-  external String get client_id;
-  external bool get useRefreshTokens;
-
-  external factory Auth0CreateOptions({String domain, String client_id, bool useRefreshTokens = false});
-}
 
 @JS('createAuth0Client')
 external _Promise<_Auth0JS> Function(Auth0CreateOptions) get _createAuth0Client;
