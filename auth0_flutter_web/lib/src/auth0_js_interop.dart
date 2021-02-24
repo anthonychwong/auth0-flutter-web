@@ -1,6 +1,8 @@
 @JS()
 library auth0_spa_sdk;
 
+import 'dart:html';
+
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
@@ -21,8 +23,11 @@ Future<Auth0> createAuth0Client(Auth0CreateOptions options) {
 @JS()
 @anonymous // since it isn't exactly the auth0 object
 abstract class _Auth0JS{
-  @JS()
-  external _Promise<String> Function() get getTokenWithPopup;
+  @JS() external _Promise<void> loginWithPopup();
+  @JS() external void logout();
+  @JS() external _Promise<String> getTokenWithPopup();
+  @JS() external _Promise<Map<String, dynamic>> getUser(GetUserOptions options);
+  @JS() external _Promise<Map<String, dynamic>> getIdTokenClaims(GetIdTokenClaimsOptions options);
 }
 
 class Auth0{
@@ -30,5 +35,10 @@ class Auth0{
 
   Auth0._(this._auth0js);
 
+  Future<void> loginWithPopup() => promiseToFuture(_auth0js.loginWithPopup());
+  void logout() => _auth0js.logout();
+
   Future<String> getTokenWithPopup() => promiseToFuture(_auth0js.getTokenWithPopup());
+  Future<Map<String, dynamic>> getUser({GetUserOptions options = null}) => promiseToFutureAsMap(_auth0js.getUser(options ?? jsify({})));
+  Future<Map<String, dynamic>> getIdTokenClaims({GetIdTokenClaimsOptions options = null}) => promiseToFutureAsMap(_auth0js.getIdTokenClaims(options ?? jsify({})));
 }
