@@ -15,6 +15,51 @@ class Auth0CreateOptions {
 
 @JS()
 @anonymous
+class BaseLoginOptions {
+  external String get display;
+  external String get prompt;
+  external Object get max_age;
+  external String get ui_locales;
+  external String get id_token_hint;
+  external String get login_hint;
+  external String get acr_values;
+  external String get scope;
+  external String get audience;
+  external String get connection;
+
+  external factory BaseLoginOptions({
+    String display,
+    String prompt,
+    Object max_age,
+    String ui_locales,
+    String id_token_hint,
+    String login_hint,
+    String acr_values,
+    String scope,
+    String audience,
+    String connection
+  });
+}
+
+@JS()
+@anonymous
+class PopupLoginOptions extends BaseLoginOptions{
+  external factory PopupLoginOptions({
+    String display,
+    String prompt,
+    Object max_age,
+    String ui_locales,
+    String id_token_hint,
+    String login_hint,
+    String acr_values,
+    String scope,
+    String audience,
+    String connection
+  });
+}
+
+@JS()
+@anonymous
 class GetUserOptions{
   external String get scope;
   external String get audience;
@@ -29,4 +74,13 @@ class GetIdTokenClaimsOptions {
   external String get audience;
 
   external factory GetIdTokenClaimsOptions({String scope, String audience});
+}
+
+@JS()
+@anonymous
+class PopupConfigOptions {
+  external int get timeoutInSeconds;
+  external Object get popup;
+
+  external factory PopupConfigOptions({int timeoutInSeconds, Object popup});
 }
