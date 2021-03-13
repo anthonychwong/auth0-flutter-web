@@ -1,4 +1,4 @@
-# [0.0.1-alpha.3] - 2021-03-02
+# [0.0.1-alpha.3] - 2021-03-13
 
 ## Added
 - options for `LoginWithPopup` (`PopupLoginOptions` and `PopupConfigOptions`)
