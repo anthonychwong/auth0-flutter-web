@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ]
               ):
               RaisedButton(child: Text('Login'),onPressed: () async {
-                await auth0.loginWithPopup();
+                await auth0.loginWithPopup(options: PopupLoginOptions(scope: "email"));
                 Map<String, dynamic> user = await auth0.getUser();
                 setState((){
                   _loggedIn = true;
