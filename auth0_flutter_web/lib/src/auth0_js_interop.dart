@@ -24,6 +24,7 @@ Future<Auth0> createAuth0Client(Auth0ClientOptions options) {
 @anonymous // since it isn't exactly the auth0 object
 abstract class _Auth0JS{
   @JS() external _Promise<void> loginWithPopup(PopupLoginOptions options, PopupConfigOptions config);
+  @JS() external _Promise<void> loginWithRedirect(RedirectLoginOptions options);
   @JS() external void logout();
   @JS() external _Promise<String> getTokenWithPopup(GetTokenWithPopupOptions options, PopupConfigOptions config);
   @JS() external _Promise<Map<String, dynamic>> getUser(GetUserOptions options);
@@ -37,6 +38,10 @@ class Auth0{
 
   Future<void> loginWithPopup({PopupLoginOptions options = null, PopupConfigOptions config = null}) {
     return promiseToFuture(_auth0js.loginWithPopup(options ?? jsify({}), config ?? jsify({})));
+  }
+
+  Future<void> loginWithRedirect({RedirectLoginOptions options = null}) {
+    return promiseToFuture(_auth0js.loginWithRedirect(options ?? jsify({})));
   }
 
   void logout() => _auth0js.logout();

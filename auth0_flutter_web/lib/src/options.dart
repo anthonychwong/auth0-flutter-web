@@ -103,6 +103,30 @@ class PopupLoginOptions extends BaseLoginOptions{
 
 @JS()
 @anonymous
+class RedirectLoginOptions extends BaseLoginOptions{
+  external String get redirect_uri;
+  external Object get appState;
+  external String get fragment;
+
+  external factory RedirectLoginOptions({
+    String display,
+    String prompt,
+    Object max_age,
+    String ui_locales,
+    String id_token_hint,
+    String login_hint,
+    String acr_values,
+    String scope,
+    String audience,
+    String connection,
+    String redirect_uri,
+    Object appState,
+    String fragment
+  });
+}
+
+@JS()
+@anonymous
 class GetTokenWithPopupOptions extends PopupLoginOptions {
   external factory GetTokenWithPopupOptions({
     String display,
