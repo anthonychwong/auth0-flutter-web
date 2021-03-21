@@ -2,6 +2,7 @@
 library auth0_spa_sdk_options;
 
 import 'package:js/js.dart';
+import 'package:meta/meta.dart';
 
 @JS()
 @anonymous
@@ -68,9 +69,9 @@ class Auth0ClientOptions extends BaseLoginOptions {
     String scope,
     String audience,
     String connection,
-    String domain,
+    @required String domain,
     String issuer,
-    String client_id,
+    @required String client_id,
     String redirect_url,
     double leeway,
     Object cacheLocation,
