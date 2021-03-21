@@ -2,7 +2,7 @@
 
 A wrapper for Auth0 SPA SDK to use Auth0 in Flutter Web.
 
-> ⚠ The latest is [`0.0.1-alpha.3`](https://pub.dev/packages/auth0_flutter_web/versions/0.0.1-alpha.3) but not serve by `pub.dev` by default.
+> ⚠ The latest is [`0.0.1-alpha.4`](https://pub.dev/packages/auth0_flutter_web/versions/0.0.1-alpha.4) but not serve by `pub.dev` by default.
 
 [![](https://img.shields.io/pub/v/auth0_flutter_web)](https://pub.dev/packages/auth0_flutter_web)
 

@@ -2,16 +2,7 @@
 library auth0_spa_sdk_options;
 
 import 'package:js/js.dart';
-
-@JS()
-@anonymous
-class Auth0CreateOptions {
-  external String get domain;
-  external String get client_id;
-  external bool get useRefreshTokens;
-
-  external factory Auth0CreateOptions({String domain, String client_id, bool useRefreshTokens = false});
-}
+import 'package:meta/meta.dart';
 
 @JS()
 @anonymous
@@ -43,8 +34,77 @@ class BaseLoginOptions {
 
 @JS()
 @anonymous
+class AdvancedOptions {
+  external String get defaultScope;
+
+  external factory AdvancedOptions({
+    String defaultScope
+  });
+}
+
+@JS()
+@anonymous
+class Auth0ClientOptions extends BaseLoginOptions {
+  external String get domain;
+  external String get issuer;
+  external String get client_id;
+  external String get redirect_url;
+  external double get leeway;
+  external Object get cacheLocation;
+  external bool get useRefreshTokens;
+  external double get authorizeTimeoutInSeconds;
+  external bool get legacySameSiteCookie;
+  external bool get useCookiesForTransactions;
+  external AdvancedOptions get advancedOptions;
+  external double get sessionCheckExpiryDays;
+  
+  external factory Auth0ClientOptions({
+    String display,
+    String prompt,
+    Object max_age,
+    String ui_locales,
+    String id_token_hint,
+    String login_hint,
+    String acr_values,
+    String scope,
+    String audience,
+    String connection,
+    @required String domain,
+    String issuer,
+    @required String client_id,
+    String redirect_url,
+    double leeway,
+    Object cacheLocation,
+    bool useRefreshTokens,
+    double authorizeTimeoutInSeconds,
+    bool legacySameSiteCookie,
+    bool useCookiesForTransactions,
+    AdvancedOptions advancedOptions,
+    double sessionCheckExpiryDays
+  });
+}
+
+@JS()
+@anonymous
 class PopupLoginOptions extends BaseLoginOptions{
   external factory PopupLoginOptions({
+    String display,
+    String prompt,
+    Object max_age,
+    String ui_locales,
+    String id_token_hint,
+    String login_hint,
+    String acr_values,
+    String scope,
+    String audience,
+    String connection
+  });
+}
+
+@JS()
+@anonymous
+class GetTokenWithPopupOptions extends PopupLoginOptions {
+  external factory GetTokenWithPopupOptions({
     String display,
     String prompt,
     Object max_age,
