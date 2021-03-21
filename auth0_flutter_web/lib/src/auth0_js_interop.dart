@@ -25,7 +25,7 @@ Future<Auth0> createAuth0Client(Auth0ClientOptions options) {
 abstract class _Auth0JS{
   @JS() external _Promise<void> loginWithPopup(PopupLoginOptions options, PopupConfigOptions config);
   @JS() external void logout();
-  @JS() external _Promise<String> getTokenWithPopup();
+  @JS() external _Promise<String> getTokenWithPopup(GetTokenWithPopupOptions options, PopupConfigOptions config);
   @JS() external _Promise<Map<String, dynamic>> getUser(GetUserOptions options);
   @JS() external _Promise<Map<String, dynamic>> getIdTokenClaims(GetIdTokenClaimsOptions options);
 }
@@ -41,7 +41,10 @@ class Auth0{
 
   void logout() => _auth0js.logout();
 
-  Future<String> getTokenWithPopup() => promiseToFuture(_auth0js.getTokenWithPopup());
+  Future<String> getTokenWithPopup({GetTokenWithPopupOptions options, PopupConfigOptions config}){
+    return promiseToFuture(_auth0js.getTokenWithPopup(options ?? jsify({}), config ?? jsify({})));
+  }
+  
   Future<Map<String, dynamic>> getUser({GetUserOptions options = null}) => promiseToFutureAsMap(_auth0js.getUser(options ?? jsify({})));
   Future<Map<String, dynamic>> getIdTokenClaims({GetIdTokenClaimsOptions options = null}) => promiseToFutureAsMap(_auth0js.getIdTokenClaims(options ?? jsify({})));
 }

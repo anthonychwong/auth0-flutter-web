@@ -103,6 +103,23 @@ class PopupLoginOptions extends BaseLoginOptions{
 
 @JS()
 @anonymous
+class GetTokenWithPopupOptions extends PopupLoginOptions {
+  external factory GetTokenWithPopupOptions({
+    String display,
+    String prompt,
+    Object max_age,
+    String ui_locales,
+    String id_token_hint,
+    String login_hint,
+    String acr_values,
+    String scope,
+    String audience,
+    String connection
+  });
+}
+
+@JS()
+@anonymous
 class GetUserOptions{
   external String get scope;
   external String get audience;
