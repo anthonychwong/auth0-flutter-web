@@ -13,9 +13,9 @@ import 'options.dart';
 class _Promise<T>{} // just to denote a js promise object
 
 @JS('createAuth0Client')
-external _Promise<_Auth0JS> Function(Auth0CreateOptions) get _createAuth0Client;
+external _Promise<_Auth0JS> Function(Auth0ClientOptions) get _createAuth0Client;
 
-Future<Auth0> createAuth0Client(Auth0CreateOptions options) {
+Future<Auth0> createAuth0Client(Auth0ClientOptions options) {
   return promiseToFuture(_createAuth0Client(options))
   .then((auth0js) => Auth0._(auth0js));
 }

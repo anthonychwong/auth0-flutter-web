@@ -5,16 +5,6 @@ import 'package:js/js.dart';
 
 @JS()
 @anonymous
-class Auth0CreateOptions {
-  external String get domain;
-  external String get client_id;
-  external bool get useRefreshTokens;
-
-  external factory Auth0CreateOptions({String domain, String client_id, bool useRefreshTokens = false});
-}
-
-@JS()
-@anonymous
 class BaseLoginOptions {
   external String get display;
   external String get prompt;
@@ -38,6 +28,58 @@ class BaseLoginOptions {
     String scope,
     String audience,
     String connection
+  });
+}
+
+@JS()
+@anonymous
+class AdvancedOptions {
+  external String get defaultScope;
+
+  external factory AdvancedOptions({
+    String defaultScope
+  });
+}
+
+@JS()
+@anonymous
+class Auth0ClientOptions extends BaseLoginOptions {
+  external String get domain;
+  external String get issuer;
+  external String get client_id;
+  external String get redirect_url;
+  external double get leeway;
+  external Object get cacheLocation;
+  external bool get useRefreshTokens;
+  external double get authorizeTimeoutInSeconds;
+  external bool get legacySameSiteCookie;
+  external bool get useCookiesForTransactions;
+  external AdvancedOptions get advancedOptions;
+  external double get sessionCheckExpiryDays;
+  
+  external factory Auth0ClientOptions({
+    String display,
+    String prompt,
+    Object max_age,
+    String ui_locales,
+    String id_token_hint,
+    String login_hint,
+    String acr_values,
+    String scope,
+    String audience,
+    String connection,
+    String domain,
+    String issuer,
+    String client_id,
+    String redirect_url,
+    double leeway,
+    Object cacheLocation,
+    bool useRefreshTokens,
+    double authorizeTimeoutInSeconds,
+    bool legacySameSiteCookie,
+    bool useCookiesForTransactions,
+    AdvancedOptions advancedOptions,
+    double sessionCheckExpiryDays
   });
 }
 

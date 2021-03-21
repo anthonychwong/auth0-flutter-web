@@ -5,9 +5,7 @@ Auth0 auth0;
 
 void main() async {
   auth0 = await createAuth0Client(
-    Auth0CreateOptions(
-      domain: '-- domain of the universal login page --',
-      client_id: '-- id of your app --',
+    Auth0ClientOptions(
     )
   );
 
