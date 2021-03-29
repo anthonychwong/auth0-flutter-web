@@ -120,6 +120,40 @@ class GetTokenWithPopupOptions extends PopupLoginOptions {
 
 @JS()
 @anonymous
+class GetTokenSilentlyOptions {
+  external String get audience;
+  external bool get ignoreCache;
+  external String get redirect_uri;
+  external String get scope;
+  external int get timeoutInSeconds;
+
+  external factory GetTokenSilentlyOptions({
+    String audience,
+    bool ignoreCache,
+    String redirect_uri,
+    String scope,
+    int timeoutInSeconds,
+  });
+}
+
+@JS()
+@anonymous
+class LogoutOptions {
+  external String get returnTo;
+  external String get client_id;
+  external bool get federated;
+  external bool get localOnly;
+
+  external factory LogoutOptions({
+    String returnTo,
+    String client_id,
+    bool federated,
+    bool localOnly,
+  });
+}
+
+@JS()
+@anonymous
 class GetUserOptions{
   external String get scope;
   external String get audience;
