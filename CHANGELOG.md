@@ -1,3 +1,15 @@
+# [0.0.1-alpha.5] - 2021-05-05
+
+## Added
+
+- options for `logout` (Merge request #6)
+- `getTokenSilently` with options (Merge request #6)
+- `isAuthenticated` (Merge request #6)
+
+## Changed
+
+- Example now can detect if authenticated and show corresponding content
+
 # [0.0.1-alpha.4] - 2021-03-21
 
 ## Added

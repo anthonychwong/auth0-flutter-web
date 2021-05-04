@@ -41,6 +41,27 @@ class _MyHomePageState extends State<MyHomePage> {
   String _avatarUrl = "";
 
   @override
+  void initState() {
+    super.initState();
+
+    auth0.isAuthenticated()
+      .then(_onAuthenticationChanged);
+  }
+
+  void _onAuthenticationChanged(bool isAuthenticated){
+    if(!isAuthenticated){
+      setState(() => _loggedIn = false);
+    } else {
+      auth0.getUser()
+        .then((Map<String, dynamic> user) => setState((){
+            _loggedIn = true;
+            _name = user["name"];
+            _avatarUrl = user["picture"];
+          })); 
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -59,18 +80,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('Logout'),
                     onPressed: () async {
                       auth0.logout();
-                      setState(() => _loggedIn = false);
+
+                      auth0.isAuthenticated()
+                        .then((value) => setState(() => _loggedIn = value));
                     },)
                 ]
               ):
               RaisedButton(child: Text('Login'),onPressed: () async {
                 await auth0.loginWithPopup(options: PopupLoginOptions(scope: "email"));
-                Map<String, dynamic> user = await auth0.getUser();
-                setState((){
-                  _loggedIn = true;
-                  _name = user["name"];
-                  _avatarUrl = user["picture"];
-                });
+                _onAuthenticationChanged(await auth0.isAuthenticated());
               },),
           ],
         ),

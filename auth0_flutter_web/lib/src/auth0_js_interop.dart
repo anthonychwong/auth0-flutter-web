@@ -41,7 +41,7 @@ class Auth0 {
     return promiseToFuture(_auth0js.loginWithPopup(options ?? jsify({}), config ?? jsify({})));
   }
 
-  void logout({LogoutOptions options}) => _auth0js.logout(options ?? jsify({}));
+  void logout({LogoutOptions options = null}) => _auth0js.logout(options ?? jsify({}));
 
   Future<String> getTokenWithPopup({GetTokenWithPopupOptions options = null, PopupConfigOptions config = null}){
     return promiseToFuture(_auth0js.getTokenWithPopup(options ?? jsify({}), config ?? jsify({})));
