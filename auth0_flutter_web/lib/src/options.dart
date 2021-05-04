@@ -49,14 +49,14 @@ class Auth0ClientOptions extends BaseLoginOptions {
   external String get issuer;
   external String get client_id;
   external String get redirect_url;
-  external double get leeway;
+  external num get leeway;
   external Object get cacheLocation;
   external bool get useRefreshTokens;
-  external double get authorizeTimeoutInSeconds;
+  external num get authorizeTimeoutInSeconds;
   external bool get legacySameSiteCookie;
   external bool get useCookiesForTransactions;
   external AdvancedOptions get advancedOptions;
-  external double get sessionCheckExpiryDays;
+  external num get sessionCheckExpiryDays;
   
   external factory Auth0ClientOptions({
     String display,
@@ -73,14 +73,14 @@ class Auth0ClientOptions extends BaseLoginOptions {
     String issuer,
     @required String client_id,
     String redirect_url,
-    double leeway,
+    num leeway,
     Object cacheLocation,
     bool useRefreshTokens,
-    double authorizeTimeoutInSeconds,
+    num authorizeTimeoutInSeconds,
     bool legacySameSiteCookie,
     bool useCookiesForTransactions,
     AdvancedOptions advancedOptions,
-    double sessionCheckExpiryDays
+    num sessionCheckExpiryDays
   });
 }
 
@@ -120,6 +120,40 @@ class GetTokenWithPopupOptions extends PopupLoginOptions {
 
 @JS()
 @anonymous
+class GetTokenSilentlyOptions {
+  external String get audience;
+  external bool get ignoreCache;
+  external String get redirect_uri;
+  external String get scope;
+  external num get timeoutInSeconds;
+
+  external factory GetTokenSilentlyOptions({
+    String audience,
+    bool ignoreCache,
+    String redirect_uri,
+    String scope,
+    num timeoutInSeconds,
+  });
+}
+
+@JS()
+@anonymous
+class LogoutOptions {
+  external String get returnTo;
+  external String get client_id;
+  external bool get federated;
+  external bool get localOnly;
+
+  external factory LogoutOptions({
+    String returnTo,
+    String client_id,
+    bool federated,
+    bool localOnly,
+  });
+}
+
+@JS()
+@anonymous
 class GetUserOptions{
   external String get scope;
   external String get audience;
@@ -139,8 +173,8 @@ class GetIdTokenClaimsOptions {
 @JS()
 @anonymous
 class PopupConfigOptions {
-  external int get timeoutInSeconds;
+  external num get timeoutInSeconds;
   external Object get popup;
 
-  external factory PopupConfigOptions({int timeoutInSeconds, Object popup});
+  external factory PopupConfigOptions({num timeoutInSeconds, Object popup});
 }
