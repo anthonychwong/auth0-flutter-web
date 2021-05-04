@@ -1,5 +1,5 @@
 name: auth0_flutter_web
-version: 0.0.1-alpha.4
+version: 0.0.1-alpha.5
 description: Wrapper of Auth0 SPA SDK for Flutter Web
 homepage: https://anthonychwong.netlify.app/
 repository: https://github.com/anthonychwong/auth0-flutter-web
