@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children:[
                   Image.network(_avatarUrl!),
                   Text(_name!),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text('Logout'),
                     onPressed: () async {
                       auth0.logout();
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     },)
                 ]
               ):
-              RaisedButton(child: Text('Login'),onPressed: () async {
+              ElevatedButton(child: Text('Login'),onPressed: () async {
                 await auth0.loginWithPopup(options: PopupLoginOptions(scope: "email"));
                 _onAuthenticationChanged(await auth0.isAuthenticated());
               },),
