@@ -37,22 +37,22 @@ class Auth0 {
 
   Auth0._(this._auth0js);
 
-  Future<void> loginWithPopup({PopupLoginOptions options = null, PopupConfigOptions config = null}) {
+  Future<void> loginWithPopup({PopupLoginOptions? options = null, PopupConfigOptions? config = null}) {
     return promiseToFuture(_auth0js.loginWithPopup(options ?? jsify({}), config ?? jsify({})));
   }
 
-  void logout({LogoutOptions options = null}) => _auth0js.logout(options ?? jsify({}));
+  void logout({LogoutOptions? options = null}) => _auth0js.logout(options ?? jsify({}));
 
-  Future<String> getTokenWithPopup({GetTokenWithPopupOptions options = null, PopupConfigOptions config = null}){
+  Future<String> getTokenWithPopup({GetTokenWithPopupOptions? options = null,PopupConfigOptions? config = null}) {
     return promiseToFuture(_auth0js.getTokenWithPopup(options ?? jsify({}), config ?? jsify({})));
   }
 
-  Future<String> getTokenSilently({GetTokenSilentlyOptions options = null}){
+  Future<String> getTokenSilently({GetTokenSilentlyOptions? options = null}) {
     return promiseToFuture(_auth0js.getTokenSilently(options ?? jsify({})));
   }
   
-  Future<Map<String, dynamic>> getUser({GetUserOptions options = null}) => promiseToFutureAsMap(_auth0js.getUser(options ?? jsify({})));
-  Future<Map<String, dynamic>> getIdTokenClaims({GetIdTokenClaimsOptions options = null}) => promiseToFutureAsMap(_auth0js.getIdTokenClaims(options ?? jsify({})));
+  Future<Map<String, dynamic>?> getUser({GetUserOptions? options = null}) => promiseToFutureAsMap(_auth0js.getUser(options ?? jsify({})));
+  Future<Map<String, dynamic>?> getIdTokenClaims({GetIdTokenClaimsOptions? options = null}) => promiseToFutureAsMap(_auth0js.getIdTokenClaims(options ?? jsify({})));
 
   Future<bool> isAuthenticated() => promiseToFuture(_auth0js.isAuthenticated());
 }

@@ -1,3 +1,10 @@
+# [0.0.1-alpha.6] - 2021-07-04
+
+## Changed
+
+- minimum dart SDK version from `2.7.0` to `2.12.0` for null safety
+- drop deprecated `RaisedButton` and switch to`ElevatedButton`
+
 # [0.0.1-alpha.5] - 2021-05-05
 
 ## Added

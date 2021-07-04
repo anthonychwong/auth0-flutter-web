@@ -16,7 +16,7 @@ class BaseLoginOptions {
   external String get acr_values;
   external String get scope;
   external String get audience;
-  external String get connection;
+  external String? get connection;
 
   external factory BaseLoginOptions({
     String display,
@@ -28,17 +28,17 @@ class BaseLoginOptions {
     String acr_values,
     String scope,
     String audience,
-    String connection
+    String? connection
   });
 }
 
 @JS()
 @anonymous
 class AdvancedOptions {
-  external String get defaultScope;
+  external String? get defaultScope;
 
   external factory AdvancedOptions({
-    String defaultScope
+    String? defaultScope
   });
 }
 
@@ -68,7 +68,7 @@ class Auth0ClientOptions extends BaseLoginOptions {
     String acr_values,
     String scope,
     String audience,
-    String connection,
+    String? connection,
     @required String domain,
     String issuer,
     @required String client_id,
@@ -97,7 +97,7 @@ class PopupLoginOptions extends BaseLoginOptions{
     String acr_values,
     String scope,
     String audience,
-    String connection
+    String? connection
   });
 }
 
@@ -114,7 +114,7 @@ class GetTokenWithPopupOptions extends PopupLoginOptions {
     String acr_values,
     String scope,
     String audience,
-    String connection
+    String? connection
   });
 }
 
@@ -140,13 +140,13 @@ class GetTokenSilentlyOptions {
 @anonymous
 class LogoutOptions {
   external String get returnTo;
-  external String get client_id;
+  external String? get client_id;
   external bool get federated;
   external bool get localOnly;
 
   external factory LogoutOptions({
     String returnTo,
-    String client_id,
+    String? client_id,
     bool federated,
     bool localOnly,
   });
