@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auth0_flutter_web/auth0_flutter_web.dart';
 
-Auth0 auth0;
+late Auth0 auth0;
 
 void main() async {
   auth0 = await createAuth0Client(
@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -37,8 +37,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _loggedIn = false;
-  String _name = "";
-  String _avatarUrl = "";
+  String? _name = "";
+  String? _avatarUrl = "";
 
   @override
   void initState() {
@@ -53,9 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() => _loggedIn = false);
     } else {
       auth0.getUser()
-        .then((Map<String, dynamic> user) => setState((){
+        .then((Map<String, dynamic>? user) => setState((){
             _loggedIn = true;
-            _name = user["name"];
+            _name = user!["name"];
             _avatarUrl = user["picture"];
           })); 
     }
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         child: Column(
@@ -74,8 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _loggedIn ? 
               Column(
                 children:[
-                  Image.network(_avatarUrl),
-                  Text(_name),
+                  Image.network(_avatarUrl!),
+                  Text(_name!),
                   RaisedButton(
                     child: Text('Logout'),
                     onPressed: () async {
