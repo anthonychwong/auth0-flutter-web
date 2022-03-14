@@ -91,6 +91,7 @@ class Auth0ClientOptions extends BaseLoginOptions {
     num sessionCheckExpiryDays,
     num httpTimeoutInSeconds,
     bool useFormData,
+    String? organization,
   });
 }
 
@@ -107,7 +108,8 @@ class PopupLoginOptions extends BaseLoginOptions{
     String acr_values,
     String scope,
     String audience,
-    String? connection
+    String? connection,
+    String? organization,
   });
 }
 
