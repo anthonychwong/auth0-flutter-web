@@ -17,6 +17,9 @@ class BaseLoginOptions {
   external String get scope;
   external String get audience;
   external String? get connection;
+  external String? get organization;
+  external String? get invitation;
+  external String? get screen_hint;
 
   external factory BaseLoginOptions({
     String display,
@@ -28,7 +31,10 @@ class BaseLoginOptions {
     String acr_values,
     String scope,
     String audience,
-    String? connection
+    String? connection,
+    String? organization,
+    String? invitation,
+    String? screen_hint,
   });
 }
 
@@ -57,6 +63,8 @@ class Auth0ClientOptions extends BaseLoginOptions {
   external bool get useCookiesForTransactions;
   external AdvancedOptions get advancedOptions;
   external num get sessionCheckExpiryDays;
+  external num get httpTimeoutInSeconds;
+  external bool get useFormData;
   
   external factory Auth0ClientOptions({
     String display,
@@ -80,7 +88,9 @@ class Auth0ClientOptions extends BaseLoginOptions {
     bool legacySameSiteCookie,
     bool useCookiesForTransactions,
     AdvancedOptions advancedOptions,
-    num sessionCheckExpiryDays
+    num sessionCheckExpiryDays,
+    num httpTimeoutInSeconds,
+    bool useFormData,
   });
 }
 
