@@ -110,6 +110,7 @@ class PopupLoginOptions extends BaseLoginOptions{
     String audience,
     String? connection,
     String? organization,
+    String? invitation,
   });
 }
 
