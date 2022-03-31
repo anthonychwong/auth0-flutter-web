@@ -43,9 +43,7 @@ class BaseLoginOptions {
 class AdvancedOptions {
   external String? get defaultScope;
 
-  external factory AdvancedOptions({
-    String? defaultScope
-  });
+  external factory AdvancedOptions({String? defaultScope});
 }
 
 @JS()
@@ -65,7 +63,7 @@ class Auth0ClientOptions extends BaseLoginOptions {
   external num get sessionCheckExpiryDays;
   external num get httpTimeoutInSeconds;
   external bool get useFormData;
-  
+
   external factory Auth0ClientOptions({
     String display,
     String prompt,
@@ -92,12 +90,14 @@ class Auth0ClientOptions extends BaseLoginOptions {
     num httpTimeoutInSeconds,
     bool useFormData,
     String? organization,
+    String? invitation,
+    String? screen_hint,
   });
 }
 
 @JS()
 @anonymous
-class PopupLoginOptions extends BaseLoginOptions{
+class PopupLoginOptions extends BaseLoginOptions {
   external factory PopupLoginOptions({
     String display,
     String prompt,
@@ -111,24 +111,24 @@ class PopupLoginOptions extends BaseLoginOptions{
     String? connection,
     String? organization,
     String? invitation,
+    String? screen_hint,
   });
 }
 
 @JS()
 @anonymous
 class GetTokenWithPopupOptions extends PopupLoginOptions {
-  external factory GetTokenWithPopupOptions({
-    String display,
-    String prompt,
-    Object max_age,
-    String ui_locales,
-    String id_token_hint,
-    String login_hint,
-    String acr_values,
-    String scope,
-    String audience,
-    String? connection
-  });
+  external factory GetTokenWithPopupOptions(
+      {String display,
+      String prompt,
+      Object max_age,
+      String ui_locales,
+      String id_token_hint,
+      String login_hint,
+      String acr_values,
+      String scope,
+      String audience,
+      String? connection});
 }
 
 @JS()
@@ -167,7 +167,7 @@ class LogoutOptions {
 
 @JS()
 @anonymous
-class GetUserOptions{
+class GetUserOptions {
   external String get scope;
   external String get audience;
 
